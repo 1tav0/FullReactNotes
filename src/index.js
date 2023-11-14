@@ -1,9 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-const child1 = React.createElement('p', {}, "I am a child1")
-const child2 = React.createElement('p', {}, "I am a child2")
-// const div = React.createElement('div', { className: "text" }, "Hello from react");
-const div = React.createElement('div', { className: "text" }, [child1, child2]);
-console.log(div);
+
+const isMorning = true;
+const morningText = "Good Morning";
+const afterNoonText = "Good Afternoon"; 
+
+const handleClick = (state) => {
+  console.log('I was clicked', state);
+}
+
+const morningElement = <div>{morningText} <span
+  onClick={()=>handleClick(morningText)}
+>it is 8am</span></div>
+const afterNoonElement = <div>{afterNoonText} it is 6pm</div>
+const greetingElement = isMorning ? morningElement : afterNoonElement
+
+//a component returns react elements
+const GreetingComponent = function () {
+  return <>
+    {greetingElement}
+    i am inside component
+  </>
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(div);
+root.render(GreetingComponent());
