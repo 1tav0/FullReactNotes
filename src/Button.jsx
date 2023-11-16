@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {memo} from 'react'
 
-const Button = (props) => {
+const Button = memo((props) => {
+  console.log("rendering button")
   const { children, clickAction } = props;
   //this makes the click listener local what about when we have a large set of files and we want to share the component and handle the clickable listener on their side when we make use of it ? 
   const handleClick = () => {
@@ -13,6 +14,6 @@ const Button = (props) => {
     {children}
     </button>
   )
-}
+})
 
 export default Button
