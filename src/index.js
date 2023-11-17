@@ -5,4 +5,4 @@ import {App} from "./App.jsx";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 
-//video stopped at 2:23
+//video stopped at 3:38
