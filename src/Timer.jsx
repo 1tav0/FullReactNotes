@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-const Timer = () => {
+const Timer = (props) => {
   const [counter, setCounter] = useState(0);
+
+  const { customText } = props;
+
   console.log("I am running");
   useEffect(() => {
     const interval = setInterval(() => {
@@ -17,8 +20,17 @@ const Timer = () => {
       clearInterval(interval);
     }
   }, [])
+
+  useEffect(() => {
+    
+    return () => {
+      console.log("cleaning up second effect for custom text");
+    }
+  },[])
   return <>
     <span>Current time is: {counter}</span>
+    <br />
+    <span>{customText}</span>
     <br />
     {/* <button
       onClick={startTimer}

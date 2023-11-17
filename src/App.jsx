@@ -9,7 +9,7 @@ const App = () => {
     {
       showTimer 
       &&
-      <Timer />
+      <Timer customText="This is custom text"/>
     }
     <button
       onClick={() => setShowTimer(!showTimer)}
