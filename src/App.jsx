@@ -18,6 +18,7 @@ const App = () => {
     >
       Hover over me (tooltip above)
     </ButtonWithTooltip>
+    
     <div style={{ height: 50 }} />
     <ButtonWithTooltip
       tooltipContent={

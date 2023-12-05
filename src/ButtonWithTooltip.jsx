@@ -17,6 +17,8 @@ const ButtonWithTooltip = (props) => {
     })
   }
 
+  //whenever we move our onPointerEnter inside the button 
+  //you get the boundaries of the rectangle and put them in a state variable & pass that to ToolTip which now has to handle where to render on top of bottom in the body cuz we used createPortal 
   return (
     <>
       <button
