@@ -1,19 +1,39 @@
 import Button from "./Button.jsx";
 import Text from "./Text.jsx";
 import Timer from "./Timer.jsx";
-import React, {useCallback, useEffect, useState} from "react";
+import ButtonWithTooltip from "./ButtonWithToolTip.jsx";
+
+import React, { useCallback, useEffect, useState } from "react";
+
 const App = () => {
-  const [showTimer, setShowTimer] = useState(true);
-  
   return <>
-    {
-      showTimer 
-      &&
-      <Timer customText="This is custom text"/>
+    <ButtonWithTooltip
+    tooltipContent = {
+      <div>
+        This tooltip does not fit above the button.
+        <br />
+        This is why it's displayed below instead!
+      </div>
     }
-    <button
-      onClick={() => setShowTimer(!showTimer)}
-    >Remove timer from app</button>
+    >
+      Hover over me (tooltip above)
+    </ButtonWithTooltip>
+    <div style={{ height: 50 }} />
+    <ButtonWithTooltip
+      tooltipContent={
+        <div>This tooltip fits above the button</div>
+      }
+    >
+      Hover over me (tooltip below)
+    </ButtonWithTooltip>
+    <div style={{ height: 50 }} />
+    <ButtonWithTooltip
+      tooltipContent={
+        <div>This tooltip fits above the button</div>
+      }
+    >
+      Hover over me (tooltip below)
+    </ButtonWithTooltip>
   </>
 }
 

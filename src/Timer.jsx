@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useLayoutEffect } from 'react'
 
 const Timer = (props) => {
   const [counter, setCounter] = useState(0);
@@ -26,6 +26,10 @@ const Timer = (props) => {
     return () => {
       console.log("cleaning up second effect for custom text");
     }
+  }, [customText])
+  
+  useLayoutEffect(() => { 
+    console.log("running useLayout effect")
   },[])
   return <>
     <span>Current time is: {counter}</span>
