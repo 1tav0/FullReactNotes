@@ -22,8 +22,8 @@ const Timer = (props) => {
   }, [])
 
   const stopTimer = () => {
-    console.log("stopping timer with id", interval);
-    clearInterval(interval);
+    console.log("stopping timer with id", interval.current);
+    clearInterval(interval.current);
   }
   return <>
     <span>Current time is: {counter}</span>
