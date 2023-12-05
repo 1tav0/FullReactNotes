@@ -1,8 +1,8 @@
-import React from "react";
+import React, {forwardRef} from "react";
 
-const Input = (props) => {
+const Input = forwardRef((props, ref) => {
   console.log("input box props are: ", props);
-  return <input ref={props.inputRef} type="text" />
-}
+  return <input ref={ref} type="text" />
+})
 
 export default Input;

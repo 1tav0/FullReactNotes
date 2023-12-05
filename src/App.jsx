@@ -28,7 +28,7 @@ const App = () => {
     <Timer>This is my timer</Timer>
 
     <h4>DOM example</h4>
-    <Input inputRef={inputRef} />
+    <Input ref={inputRef} />
     <button onClick={() => { 
       console.log(inputRef.current.getBoundingClientRect());
       if (inputRef.current) {
