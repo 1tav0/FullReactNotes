@@ -2,39 +2,39 @@ import Button from "./Button.jsx";
 import Text from "./Text.jsx";
 import Timer from "./Timer.jsx";
 import ButtonWithTooltip from "./ButtonWithToolTip.jsx";
-
-import React, { useCallback, useEffect, useState } from "react";
+import Input from "./Input.js";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 const App = () => {
+  let myLocal = 0;
+  const ref = useRef(0);
+  const [myCount, setMyCount] = useState(0);
+  const inputRef = useRef(null);
+
   return <>
-    <ButtonWithTooltip
-    tooltipContent = {
-      <div>
-        This tooltip does not fit above the button.
-        <br />
-        This is why it's displayed below instead!
-      </div>
-    }
-    >
-      Hover over me (tooltip above)
-    </ButtonWithTooltip>
-    
-    <div style={{ height: 50 }} />
-    <ButtonWithTooltip
-      tooltipContent={
-        <div>This tooltip fits above the button</div>
+    <button onClick={() => {myLocal += 1}}>Change local variable</button>
+    <button onClick={() => {ref.current += 1}}>Change ref</button>
+    <button onClick={() => {setMyCount(prevCount => prevCount+1)}}>Change state</button>
+
+    <div>
+      <span>Local var: {myLocal}</span>
+      <br />
+      <span>ref:{ref.current}</span>
+      <br />
+      <span>state variable: {myCount}</span>
+    </div>
+
+    <h4>Timer Example</h4>
+    <Timer>This is my timer</Timer>
+
+    <h4>DOM example</h4>
+    <input type="text" ref={inputRef} />
+    <button onClick={() => { 
+      console.log(inputRef.current.getBoundingClientRect());
+      if (inputRef.current) {
+        inputRef.current.focus()
       }
-    >
-      Hover over me (tooltip below)
-    </ButtonWithTooltip>
-    <div style={{ height: 50 }} />
-    <ButtonWithTooltip
-      tooltipContent={
-        <div>This tooltip fits above the button</div>
-      }
-    >
-      Hover over me (tooltip below)
-    </ButtonWithTooltip>
+    }}>Focus the input textbox</button>
   </>
 }
 

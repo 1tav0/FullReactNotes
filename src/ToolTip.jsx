@@ -26,7 +26,7 @@ const ToolTip = (props) => {
   }
   //calculate the height BEFORE the tooltip is RENDERED
   //useLayoutEffect executes before anything is repainted
-  useEffect(() => {
+  useLayoutEffect(() => {
     //to get the height
     const { height } = tooltipRef.current.getBoundingClientRect();
     setTooltipHeight(height);

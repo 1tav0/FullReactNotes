@@ -1,44 +1,38 @@
-import React, { useEffect, useState, useLayoutEffect } from 'react'
+import React, { useEffect, useState, useLayoutEffect, useRef } from 'react'
 
 const Timer = (props) => {
   const [counter, setCounter] = useState(0);
 
   const { customText } = props;
-
-  console.log("I am running");
+  const interval = useRef(null);
+  //console.log("I am running");
   useEffect(() => {
-    const interval = setInterval(() => {
+      interval.current = setInterval(() => {
       setCounter(prev => {
         return prev + 1;
       })
     }, 1000);
     //clean up functions
-    console.log("created interval with id ", interval);
+    console.log("created interval with id ", interval.current);
     return () => {
       // console.log("I was unmounted");
-      console.log("removing interval with id ", interval);
+      //console.log("removing interval with id ", interval);
       clearInterval(interval);
     }
   }, [])
 
-  useEffect(() => {
-    
-    return () => {
-      console.log("cleaning up second effect for custom text");
-    }
-  }, [customText])
-  
-  useLayoutEffect(() => { 
-    console.log("running useLayout effect")
-  },[])
+  const stopTimer = () => {
+    console.log("stopping timer with id", interval);
+    clearInterval(interval);
+  }
   return <>
     <span>Current time is: {counter}</span>
     <br />
     <span>{customText}</span>
     <br />
-    {/* <button
-      onClick={startTimer}
-    >Start Timer</button> */}
+    <button
+      onClick={stopTimer}
+    >Stop Timer</button>
   </>
 }
 
